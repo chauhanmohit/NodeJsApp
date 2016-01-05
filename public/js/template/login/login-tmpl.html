@@ -1,0 +1,38 @@
+<style type="text/css">
+.btn-group-lg > .btn, .btn-lg {
+    padding: 10px !important;
+}
+</style>
+<section class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" ng-show="LC.ResponseMessage" ng-cloak>Please Sign In</h3>
+                <h3 class="panel-title alert alert-danger" ng-hide="LC.ResponseMessage" ng-cloak>{{LC.updateStatus.message}}</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" name="loginForm" ng-submit="LC.guestLogin(loginForm.$valid)">
+                    <fieldset>
+                        <div class="form-group">
+                            <input name="email" ng-model="LC.loginData.email" type="text" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" placeholder="Email" autofocus required />
+                            <p class="text-danger inner-error" ng-show="submitted && LC.loginData.email.$error.required">Email is required.</p>
+                            <span ng-cloak ng-show="submitted && loginForm.email.$error.pattern || loginData.email.$error.pattern" class="text-danger inner-error">Email must be valid.</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" ng-model="LC.loginData.password" required />
+                            <p ng-cloak class="text-danger inner-error" ng-show="submitted && LC.loginForm.password.$error.required">Password is required.</p>
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        <div class="form-group">
+                        <div class="col-xs-4">
+                            <input type="submit" ng-click="submitted=true" ng-disabled="loginForm.$invalid" ng-class="{ 'disabled' : loginForm.$invalid }" class="btn btn-lg btn-success btn-block" value="Log in">     
+                         </div><!-- /.col -->
+                        <!-- <div class="col-xs-4"></div>-->
+                         <div class="col-xs-4"><a class="btn btn-lg btn-warning btn-block" href="/#/register">SignUp</a></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

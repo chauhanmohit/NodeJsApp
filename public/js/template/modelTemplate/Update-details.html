@@ -1,0 +1,38 @@
+<section class="MyModelContainer">
+    <div class="MyModelRow">
+        <div class="modal-header">
+            <h3 class="modal-title">Update user info</h3>
+        </div>
+        <form role="form" name="updateForm" ng-submit="IU.ok()(updateForm.$valid)">
+        <div class="modal-body">
+                <fieldset>
+                    <div class="form-group">
+                        <input name="fname" ng-model="IU.updateData.firstname" type="text" class="form-control" placeholder="First Name" autofocus required />
+                        <p class="text-danger inner-error" ng-show="submitted && IU.updateData.email.$error.required">Email is required.</p>
+                    </div>
+                    <div class="form-group">
+                        <input name="lname" ng-model="IU.updateData.lastname" type="text" class="form-control" placeholder="Last Name" autofocus required />
+                        <p class="text-danger inner-error" ng-show="submitted && IU.updateData.email.$error.required">Email is required.</p>
+                    </div>
+                    <div class="form-group">
+                        <input name="email" ng-model="IU.updateData.email" type="email" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" class="form-control" placeholder="Email" autofocus required />
+                        <p class="text-danger inner-error" ng-show="submitted && IU.updateData.email.$error.required">Email is required.</p>
+                        <span ng-show="submitted && updateForm.email.$error.pattern || updateData.email.$error.pattern" class="text-danger inner-error">Email must be valid.</span>
+                    </div>
+                </fieldset>
+        </div>
+        <div class="modal-footer">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+                <div class="col-sm-2">
+                    <button type="submit" ng-click="submitted=true" ng-disabled="updateForm.$invalid" ng-class="{ 'disabled' : updateForm.$invalid }" class="btn btn-success">Submit</button>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-warning" type="button" ng-click="IU.cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</section>
